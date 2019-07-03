@@ -6,15 +6,5 @@ using System.Threading.Tasks;
 
 namespace Facturas
 {
-    class AddBillLine
-    {
-        public delegate void AddBillLineEvent(string line);
-        public event AddBillLineEvent addBillEvent;
-      
-        public void LaunchAddBillLineEvent(string line)
-        {
-            addBillEvent(line);
-        }
-
-    }
+    public delegate void AddBillLineEvent(string line);
 }

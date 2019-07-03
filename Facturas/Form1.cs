@@ -13,16 +13,19 @@ namespace Facturas
     public partial class Form1 : Form
     {
         private List<string> lineasFactura = new List<string>();
-        private AddBillLine addBillLine = new AddBillLine();
+
+        public delegate void AddBillLineEvent(string line);
+        public event AddBillLineEvent addBillEvent;
+
         public Form1()
         {
             InitializeComponent();
-            addBillLine.addBillEvent += AddLineHandler;
+            addBillEvent += AddLineHandler;
         }
       
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            addBillLine.LaunchAddBillLineEvent(txtLineaFactura.Text);
+            addBillEvent(txtLineaFactura.Text);
         }
 
         private void AddLineHandler(string line)
